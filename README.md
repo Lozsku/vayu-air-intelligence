@@ -8,7 +8,7 @@
 
 *Built for the Gen AI Academy APAC Edition Hackathon — "AI for Better Living and Smarter Communities."*
 
-[Live demo](#) · [3-min video](#) · Provider-agnostic AI (Gemini / OpenAI / local)
+[Live demo](https://suspended-computation-britannica-kiss.trycloudflare.com) · Provider-agnostic AI (Gemini / OpenAI / local)
 
 </div>
 
