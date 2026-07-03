@@ -91,9 +91,37 @@ def _local_answer(f: dict, profile: str) -> str:
     return " ".join(parts)
 
 
+_SUPERLATIVE_KW = ["which city", "worst air", "most polluted", "cleanest", "best air",
+                   "safest city", "worst city", "rank the cit", "compare cit"]
+
+
+def _compare_cities(question: str) -> dict:
+    """Answer cross-city superlative questions ('which city has the worst air?')."""
+    ranked = []
+    for c in store.list_cities():
+        snap = engine.city_snapshot(c["city"])
+        if snap.get("aqi") is not None:
+            ranked.append((c["city"], snap["aqi"], snap["category"]))
+    if not ranked:
+        return {"answer": "I don't have data loaded yet.", "backend": "local"}
+    ranked.sort(key=lambda x: x[1], reverse=True)  # worst first
+    want_best = any(k in question for k in ["cleanest", "best air", "safest"])
+    pick = ranked[-1] if want_best else ranked[0]
+    board = "; ".join(f"{n} {a} ({cat})" for n, a, cat in ranked)
+    which = "cleanest" if want_best else "most polluted"
+    text = (f"Right now {pick[0]} has the {which} air at {pick[1]} AQI ({pick[2]}). "
+            f"Across the cities I track (worst to best): {board}.")
+    return {"answer": text, "backend": "local", "city": pick[0],
+            "ranking": [{"city": n, "aqi": a, "category": cat} for n, a, cat in ranked]}
+
+
 def answer(question: str, city: str | None = None) -> dict:
+    # Cross-city superlative questions don't depend on a single selected city.
+    mentioned = resolve_city(question)
+    if not mentioned and any(k in question.lower() for k in _SUPERLATIVE_KW):
+        return _compare_cities(question.lower())
     # A city named in the question always wins over the UI's current selection.
-    city = resolve_city(question) or city
+    city = mentioned or city
     if not city:
         cities = ", ".join(c["city"] for c in store.list_cities())
         return {"answer": f"Which city would you like to check? I currently track: {cities}.",
