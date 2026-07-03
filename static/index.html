@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vayu — AI Air & Health Decision Intelligence</title>
+  <meta name="description" content="Vayu turns community air-quality data into fast, explainable health decisions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Chart.js vendored locally so the app has zero external runtime dependencies. -->
+  <script defer src="js/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">वायु</span>
+      <div>
+        <h1>Vayu</h1>
+        <p>AI Decision Intelligence for Community Air &amp; Health</p>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge" id="aiBadge">AI: …</span>
+      <span class="badge" id="liveBadge">Data: bundled</span>
+      <a class="badge ghost" href="https://github.com/" id="repoBadge" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Ask Vayu -->
+    <section class="ask card">
+      <h2>Ask Vayu</h2>
+      <p class="muted">Ask in plain language — Vayu answers with a grounded, explainable recommendation.</p>
+      <div class="ask-row">
+        <input id="askInput" type="text" placeholder="Is it safe for my kid to play outside in Delhi this evening?" />
+        <button id="askBtn">Ask</button>
+      </div>
+      <div class="chips" id="sampleChips"></div>
+      <div class="answer hidden" id="answerBox">
+        <div class="answer-head">
+          <span class="answer-verdict" id="answerVerdict"></span>
+          <span class="answer-backend" id="answerBackend"></span>
+        </div>
+        <p id="answerText"></p>
+        <details class="grounding">
+          <summary>Why this answer? (grounded facts)</summary>
+          <p id="answerGrounding"></p>
+        </details>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- City list -->
+      <section class="card cities">
+        <h2>Cities <span class="muted small">worst air first</span></h2>
+        <div id="cityList" class="city-list"></div>
+        <div class="alerts">
+          <h3>Live alerts</h3>
+          <div id="alertsFeed" class="alerts-feed"></div>
+        </div>
+      </section>
+
+      <!-- Detail -->
+      <section class="card detail">
+        <div class="detail-head">
+          <div>
+            <h2 id="detailCity">—</h2>
+            <p class="muted small" id="detailStation">Select a city</p>
+          </div>
+          <div class="gauge" id="gauge">
+            <span class="gauge-val" id="gaugeVal">—</span>
+            <span class="gauge-cat" id="gaugeCat"></span>
+          </div>
+        </div>
+
+        <div class="pollutants" id="pollutants"></div>
+
+        <div class="decision hidden" id="decisionBox">
+          <span class="decision-icon" id="decisionIcon"></span>
+          <div>
+            <strong id="decisionTitle"></strong>
+            <p id="decisionText" class="small"></p>
+          </div>
+          <div class="profile-pick">
+            <label>for</label>
+            <select id="profileSelect">
+              <option value="general">everyone</option>
+              <option value="child">children</option>
+              <option value="elderly">elderly</option>
+              <option value="asthma">asthma / respiratory</option>
+              <option value="athlete">outdoor exercise</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="chart-wrap">
+          <div class="chart-title">7-day history &amp; 24-hour forecast
+            <span class="muted small" id="forecastMeta"></span></div>
+          <canvas id="trendChart" height="120"></canvas>
+        </div>
+
+        <div class="episodes" id="episodes"></div>
+      </section>
+    </div>
+
+    <footer>
+      <p>Vayu · Built for the Gen AI Academy APAC hackathon — "AI for Better Living and Smarter Communities".
+        AQI via US EPA breakpoints · forecast = seasonal profile + trend · anomalies = robust MAD z-score.
+        Provider-agnostic AI (Gemini / OpenAI / local).</p>
+    </footer>
+  </main>
+
+  <script defer src="js/charts.js"></script>
+  <script defer src="js/app.js"></script>
+</body>
+</html>
