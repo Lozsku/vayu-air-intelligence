@@ -44,7 +44,13 @@ async function init() {
 
   await loadCities();
   await loadAlerts();
-  if (state.city) selectCity(state.city);
+  if (state.city) await selectCity(state.city);
+
+  // Shareable deep link: /?ask=<question>&city=<city> auto-runs the assistant.
+  const params = new URLSearchParams(location.search);
+  const preAsk = params.get('ask');
+  if (params.get('city')) { state.city = params.get('city'); selectCity(state.city); }
+  if (preAsk) { $('askInput').value = preAsk; doAsk(); }
 }
 
 // ---------------- cities ----------------
