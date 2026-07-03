@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+  :root {
+    --bg:#0b1020; --bg2:#121a30; --card:#16203a; --card2:#1c2946;
+    --text:#e8eefc; --muted:#93a2c4; --accent:#4f8cff; --accent2:#22d3ee; --border:#26324f;
+    --good:#2ecc71; --mod:#f1c40f; --usg:#e67e22; --unh:#e74c3c;
+  }
+  body { background:#05070f; }
+  .slide {
+    width:1280px; height:720px; background:
+      radial-gradient(900px 500px at 85% -8%, #1b2b52 0, transparent 55%),
+      linear-gradient(160deg,#0b1020,#0e1730);
+    color:var(--text); padding:54px 64px; position:relative; overflow:hidden;
+    page-break-after:always; display:flex; flex-direction:column;
+  }
+  .slide:last-child { page-break-after:auto; }
+  .kicker { color:var(--accent2); font-size:15px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  h1 { font-size:40px; font-weight:800; letter-spacing:-.02em; margin-top:6px; line-height:1.1; }
+  h2 { font-size:30px; font-weight:800; letter-spacing:-.01em; }
+  .sub { color:var(--muted); font-size:19px; margin-top:8px; line-height:1.5; }
+  .foot { position:absolute; bottom:22px; left:64px; right:64px; display:flex; justify-content:space-between;
+          color:#5f7099; font-size:13px; border-top:1px solid var(--border); padding-top:12px; }
+  .logo { font-weight:800; background:linear-gradient(135deg,var(--accent),var(--accent2));
+          -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 24px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; }
+  ul { list-style:none; } li { margin:9px 0; padding-left:26px; position:relative; font-size:17px; line-height:1.45; color:#d5def5; }
+  li:before { content:'▹'; position:absolute; left:0; color:var(--accent2); font-weight:800; }
+  b, strong { color:#fff; }
+  .pill { display:inline-block; background:var(--card2); border:1px solid var(--border); border-radius:999px;
+          padding:6px 14px; font-size:14px; color:#cfe0ff; margin:4px 6px 4px 0; }
+  .accent { color:var(--accent2); }
+  .big { font-size:22px; }
+  /* Title slide */
+  .title-wrap { display:flex; flex-direction:column; justify-content:center; height:100%; }
+  .devanagari { font-size:96px; }
+  /* Flow diagram */
+  .flow { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; }
+  .node { background:var(--card2); border:1px solid var(--border); border-radius:12px; padding:14px 12px;
+          text-align:center; font-size:14px; flex:1; }
+  .node .t { font-weight:700; color:#fff; font-size:15px; }
+  .node .d { color:var(--muted); font-size:12px; margin-top:4px; }
+  .arrow { color:var(--accent); font-size:26px; font-weight:800; }
+  .layer { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 18px; margin:10px 0; }
+  .layer .lt { font-weight:700; color:var(--accent2); font-size:14px; text-transform:uppercase; letter-spacing:.08em; }
+  .shot { width:100%; border-radius:12px; border:1px solid var(--border); }
+  .stat { font-size:34px; font-weight:800; color:#fff; }
+  .stat-l { color:var(--muted); font-size:14px; }
+  .gcard { background:linear-gradient(135deg,#16203a,#1a2647); border:1px solid var(--border);
+           border-radius:14px; padding:16px; }
+  .gcard .h { font-weight:700; color:#fff; font-size:17px; }
+  .gcard .p { color:var(--muted); font-size:14px; margin-top:6px; line-height:1.4; }
+</style>
+</head>
+<body>
+
+<!-- 1. TITLE / PARTICIPANT DETAILS -->
+<section class="slide">
+  <div class="title-wrap">
+    <div class="devanagari logo">वायु</div>
+    <h1 style="font-size:58px; margin-top:10px;">Vayu</h1>
+    <div class="sub big" style="max-width:820px;">AI Decision Intelligence for Community Air Quality &amp; Health —
+      <span class="accent">ask in plain language, get a fast, forecast-backed, explainable decision.</span></div>
+    <div style="display:flex; gap:40px; margin-top:40px;">
+      <div class="card" style="min-width:320px;">
+        <div class="kicker">Participant</div>
+        <div class="big" style="margin-top:6px;"><b>Harsha Vardhan</b></div>
+        <div class="sub" style="font-size:15px;">Solo submission</div>
+      </div>
+      <div class="card" style="flex:1;">
+        <div class="kicker">Problem Statement</div>
+        <div class="big" style="margin-top:6px;"><b>AI for Better Living and Smarter Communities</b></div>
+        <div class="sub" style="font-size:15px;">Build an AI-powered Decision Intelligence Platform.</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span> · Gen AI Academy APAC Edition</span><span>Build in APAC. Build for the world.</span></div>
+</section>
+
+<!-- 2. BRIEF ABOUT THE IDEA -->
+<section class="slide">
+  <div class="kicker">Brief about the idea</div>
+  <h1>Dashboards show numbers. People need <span class="accent">decisions.</span></h1>
+  <div class="sub" style="max-width:1050px;">Every APAC megacity publishes air-quality data, yet a parent, a runner, or a
+    city official still can't get a straight answer to the only question that matters:
+    <b>"Given the air right now and where it's heading, what should I <i>do</i>?"</b></div>
+
+  <div class="grid3" style="margin-top:26px;">
+    <div class="card">
+      <div class="kicker">Real-world problem &amp; impact</div>
+      <p class="sub" style="font-size:16px; margin-top:8px;">Air pollution is the top environmental health
+        risk in APAC. Vayu converts open sensor data into <b>personal, population-aware health decisions</b>
+        for citizens and a <b>situational-awareness + alert layer</b> for city stakeholders.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Google-Cloud-first approach</div>
+      <p class="sub" style="font-size:16px; margin-top:8px;">A <b>Gemini</b>-powered assistant reasons over an
+        analytics engine (AQI, forecast, anomalies); designed for <b>Vertex AI</b>, a <b>BigQuery</b> time-series
+        lake, and one-command <b>Cloud Run</b> deploy. Grounded so it never invents numbers.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Data → decision workflow</div>
+      <p class="sub" style="font-size:16px; margin-top:8px;">Ingest → compute <b>EPA AQI</b> → <b>forecast 24h</b>
+        → <b>detect episodes</b> → synthesize a <b>recommendation</b> → narrate in natural language. A task that
+        took an analyst minutes collapses to <b>one sentence in &lt;1s.</b></p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px; border-left:3px solid var(--accent2);">
+    <div class="sub" style="font-size:17px;"><b>"Is it safe for my kid to play outside in Delhi this evening?"</b>
+      → <span class="accent">"Delhi is 158 AQI (Unhealthy), driven by PM2.5, peaking at 218 (Very Unhealthy)
+      around 8:30. For children, outdoor play isn't advisable now — a pollution spike was detected last night
+      (PM2.5 207 vs 113 baseline)."</span></div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span></span><span>2 / 9</span></div>
+</section>
+
+<!-- 3. OPPORTUNITIES / USP -->
+<section class="slide">
+  <div class="kicker">Opportunities · USP &amp; differentiation</div>
+  <h1>Not another AQI dashboard — a <span class="accent">decision engine.</span></h1>
+  <div class="grid2" style="margin-top:20px;">
+    <div class="card">
+      <div class="kicker" style="color:#fff;">How it's different</div>
+      <ul style="margin-top:8px;">
+        <li>Existing apps show a <b>number</b>; Vayu gives a <b>recommendation</b> tailored to who you are and what you plan to do.</li>
+        <li><b>Forward-looking</b>: a 24-hour forecast with a confidence band, not just the current reading.</li>
+        <li><b>Grounded &amp; explainable</b> — the LLM only narrates engine-computed facts, with a "Why this answer?" panel. <b>No hallucinated numbers.</b></li>
+        <li><b>Never goes dark</b>: provider-agnostic AI falls back to a local composer with zero cloud dependency.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="kicker" style="color:#fff;">Core USP</div>
+      <div class="sub big" style="margin-top:10px; color:#eaf1ff;">The fastest path from <b>public air data</b>
+        to a <b>trustworthy personal decision</b> — in one plain-language question.</div>
+      <div style="margin-top:18px;">
+        <span class="pill">🗣️ Plain-language assistant</span>
+        <span class="pill">🔮 24h forecast + band</span>
+        <span class="pill">🚨 Anomaly / episode detection</span>
+        <span class="pill">🧑‍⚕️ Population-aware advice</span>
+        <span class="pill">🛡️ Responsible / explainable AI</span>
+        <span class="pill">🌏 6 APAC cities</span>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span></span><span>3 / 9</span></div>
+</section>
+
+<!-- 4. FEATURES -->
+<section class="slide">
+  <div class="kicker">List of features offered by the solution</div>
+  <h1>What Vayu does</h1>
+  <div class="grid2" style="margin-top:20px; gap:16px 28px;">
+    <div class="card"><b class="big">🗣️ Ask Vayu — NL assistant</b><p class="sub" style="font-size:15px;">Plain-English question → grounded answer + one clear recommendation, with best-time-window guidance.</p></div>
+    <div class="card"><b class="big">📊 Standard EPA AQI</b><p class="sub" style="font-size:15px;">PM2.5, PM10, NO₂, O₃ sub-indices with dominant-pollutant attribution — real domain logic.</p></div>
+    <div class="card"><b class="big">🔮 24-hour forecast</b><p class="sub" style="font-size:15px;">Seasonal hour-of-day profile × recent trend, with a widening confidence band.</p></div>
+    <div class="card"><b class="big">🚨 Pollution-episode detection</b><p class="sub" style="font-size:15px;">Robust rolling median + MAD z-score flags real spikes vs. baseline.</p></div>
+    <div class="card"><b class="big">🧑‍⚕️ Population-aware decisions</b><p class="sub" style="font-size:15px;">Tailored guidance for children, elderly, asthma, pregnancy, and outdoor exercise.</p></div>
+    <div class="card"><b class="big">📡 Live cross-city alert feed</b><p class="sub" style="font-size:15px;">Unhealthy-air + episode alerts — the push layer for schools &amp; city stakeholders.</p></div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span></span><span>4 / 9</span></div>
+</section>
+
+<!-- 5. PROCESS FLOW / USE-CASE -->
+<section class="slide">
+  <div class="kicker">Process flow &amp; use-case</div>
+  <h1>From a question to a decision, in one second</h1>
+  <div class="flow" style="margin-top:34px;">
+    <div class="node"><div class="t">👤 User asks</div><div class="d">"Safe for my kid outside in Delhi tonight?"</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">🧭 Intent parse</div><div class="d">city · profile (child) · activity</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">⚙️ Engine facts</div><div class="d">AQI · 24h forecast · episodes</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">🧠 Decision</div><div class="d">population-aware recommendation</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">💬 Gemini narrates</div><div class="d">grounded, explainable answer</div></div>
+  </div>
+
+  <div class="grid3" style="margin-top:40px;">
+    <div class="card"><div class="kicker" style="color:#fff;">Citizen use-case</div><p class="sub" style="font-size:15px; margin-top:6px;">Parents, runners, commuters, elderly &amp; asthma patients get an instant, personalized go / no-go call.</p></div>
+    <div class="card"><div class="kicker" style="color:#fff;">School / workplace</div><p class="sub" style="font-size:15px; margin-top:6px;">Auto-alerts drive decisions: move practice indoors, shift shifts, issue advisories.</p></div>
+    <div class="card"><div class="kicker" style="color:#fff;">City stakeholder</div><p class="sub" style="font-size:15px; margin-top:6px;">Cross-city episode feed + trends support faster interventions and public communication.</p></div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span></span><span>5 / 9</span></div>
+</section>
+
+<!-- 6. WIREFRAMES / MOCKUPS -->
+<section class="slide">
+  <div class="kicker">Wireframes / mockups of the proposed solution</div>
+  <h1>One screen: ask, see, decide</h1>
+  <div class="grid2" style="margin-top:16px; align-items:start;">
+    <div>
+      <img class="shot" src="shot_ask.png" alt="Ask Vayu">
+      <p class="sub" style="font-size:14px; margin-top:8px;"><b>Ask Vayu</b> — natural-language answer with a verdict,
+        AI-provenance badge, and an expandable "Why this answer?" panel.</p>
+    </div>
+    <div>
+      <img class="shot" src="shot_hero.png" alt="Dashboard" style="max-height:470px; object-fit:cover; object-position:top;">
+      <p class="sub" style="font-size:14px; margin-top:8px;"><b>Live dashboard</b> — worst-air-first city list, AQI gauge,
+        pollutant cards, population decision, 7-day history + 24h forecast, detected episodes, alert feed.</p>
+    </div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span></span><span>6 / 9</span></div>
+</section>
+
+<!-- 7. ARCHITECTURE -->
+<section class="slide">
+  <div class="kicker">Architecture of the proposed solution</div>
+  <h1>Grounded AI over a transparent analytics engine</h1>
+  <div class="layer"><div class="lt">Data</div>
+    <div class="flow"><div class="node"><div class="t">Community sensors / OpenAQ</div></div><div class="arrow">→</div>
+      <div class="node"><div class="t">Ingestion &amp; enrichment</div></div><div class="arrow">→</div>
+      <div class="node"><div class="t">Time-series store — SQLite → <span class="accent">BigQuery</span></div></div></div>
+  </div>
+  <div class="layer"><div class="lt">Intelligence engine (explainable)</div>
+    <div class="flow">
+      <div class="node"><div class="t">EPA AQI</div><div class="d">sub-indices + dominant</div></div><div class="arrow">+</div>
+      <div class="node"><div class="t">Forecast</div><div class="d">seasonal × trend + band</div></div><div class="arrow">+</div>
+      <div class="node"><div class="t">Anomaly</div><div class="d">MAD z-score episodes</div></div><div class="arrow">→</div>
+      <div class="node"><div class="t">Decision engine</div><div class="d">population-aware rules</div></div>
+    </div>
+  </div>
+  <div class="layer"><div class="lt">AI &amp; delivery</div>
+    <div class="flow">
+      <div class="node"><div class="t">Provider-agnostic LLM</div><div class="d"><span class="accent">Gemini / Vertex AI</span> · OpenAI · local fallback</div></div><div class="arrow">→</div>
+      <div class="node"><div class="t">Flask API</div><div class="d">REST · grounded prompts</div></div><div class="arrow">→</div>
+      <div class="node"><div class="t">Dashboard</div><div class="d">Chart.js SPA</div></div><div class="arrow">→</div>
+      <div class="node"><div class="t"><span class="accent">Cloud Run</span> / VM</div><div class="d">containerized, HTTPS</div></div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span></span><span>7 / 9</span></div>
+</section>
+
+<!-- 8. TECHNOLOGIES / GOOGLE CLOUD -->
+<section class="slide">
+  <div class="kicker">Technologies &amp; Google Cloud services</div>
+  <h1>Why this stack — built to scale &amp; deploy for real</h1>
+  <div class="grid3" style="margin-top:20px;">
+    <div class="gcard"><div class="h">🔷 Gemini / Vertex AI</div><div class="p">Natural-language reasoning + narration. Grounded on engine facts for trustworthy, explainable answers. `google-genai` wired in; flip on with an API key.</div></div>
+    <div class="gcard"><div class="h">🔶 BigQuery</div><div class="p">The station × pollutant × time schema maps directly to a BigQuery lake for city-scale, multi-year, low-latency analytics.</div></div>
+    <div class="gcard"><div class="h">🚀 Cloud Run</div><div class="p">Containerized (Dockerfile included) for one-command, autoscaling, scale-to-zero deployment — cost-efficient for public services.</div></div>
+    <div class="gcard"><div class="h">🐍 Python · Flask · NumPy</div><div class="p">Lightweight, ARM-friendly engine (EPA AQI, forecasting, anomaly detection). Runs on a 2-vCPU node or scales horizontally.</div></div>
+    <div class="gcard"><div class="h">📈 Chart.js (vendored)</div><div class="p">Zero external runtime JS dependency — the app is fully self-contained and works offline.</div></div>
+    <div class="gcard"><div class="h">🌐 OpenAQ + Cloudflare</div><div class="p">Optional live real-world data; deployed today over HTTPS. Provider-agnostic AI keeps the demo resilient.</div></div>
+  </div>
+  <div class="card" style="margin-top:18px;">
+    <div class="sub" style="font-size:16px;"><b>Scalability &amp; real-world deployment:</b> stateless API + managed data store → horizontal scale on Cloud Run;
+      the engine is a civic re-point of a <b>production real-time analytics platform</b> we run for financial markets — the
+      time-series shape is identical, so forecasting &amp; anomaly detection transferred directly.</div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span></span><span>8 / 9</span></div>
+</section>
+
+<!-- 9. PROTOTYPE SNAPSHOTS -->
+<section class="slide">
+  <div class="kicker">Snapshots of the prototype</div>
+  <h1>Live, deployed, and working today</h1>
+  <div class="grid2" style="margin-top:14px; align-items:start;">
+    <img class="shot" src="shot_hero.png" style="max-height:430px; object-fit:cover; object-position:top;">
+    <div>
+      <div class="card"><div class="kicker" style="color:#fff;">Live prototype</div>
+        <div class="sub" style="font-size:15px; word-break:break-all;">🔗 admit-repository-qualified-administrative.trycloudflare.com</div></div>
+      <div class="card" style="margin-top:14px;"><div class="kicker" style="color:#fff;">Source code (public)</div>
+        <div class="sub" style="font-size:15px;">🔗 github.com/Lozsku/vayu-air-intelligence</div></div>
+      <div class="grid3" style="margin-top:14px;">
+        <div class="card" style="text-align:center; padding:14px;"><div class="stat">6</div><div class="stat-l">APAC cities</div></div>
+        <div class="card" style="text-align:center; padding:14px;"><div class="stat">34k+</div><div class="stat-l">measurements</div></div>
+        <div class="card" style="text-align:center; padding:14px;"><div class="stat">&lt;1s</div><div class="stat-l">to a decision</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><span class="logo">Vayu</span> · वायु</span><span>Thank you — Build in APAC, build for the world.</span></div>
+</section>
+
+</body>
+</html>
