@@ -46,8 +46,9 @@ function renderTrend(history, forecast) {
 
   const options = {
     responsive: true, maintainAspectRatio: false,
-    resizeDelay: 200,            // debounce resizes — extra guard against resize churn
-    animation: { duration: 300 },
+    resizeDelay: 250,            // debounce resizes — extra guard against resize churn
+    animation: false,            // no animation loop → chart cannot drive continuous frames
+    events: ['mousemove', 'mouseout', 'click'],  // no scroll/resize-driven redraw churn
     interaction: { mode: 'index', intersect: false },
     scales: {
       x: { type: 'linear', ticks: { color: '#93a2c4', maxTicksLimit: 7, callback: v => fmtHour(v / 1000) },
